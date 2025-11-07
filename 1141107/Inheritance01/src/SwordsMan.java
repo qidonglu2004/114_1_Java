@@ -1,33 +1,11 @@
-public class SwordsMan {
-    private String name;
-    private int health;
-    private int attackPower;
-
+public class SwordsMan extends Role {
     public SwordsMan(String name, int health, int attackPower) {
-        this.name = name;
-        this.health = health;
-        this.attackPower = attackPower;
+        super(name, health, attackPower);
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public int getAttackPower() {
-        return attackPower;
-    }
-
-    public void attack(SwordsMan opponent) {
-        opponent.health -= this.attackPower;
-        System.out.println(this.name + " 攻擊 " + opponent.name +
-                " 造成 " + this.attackPower + " 點傷害！");
-    }
-
-    public boolean isAlive() {
-        return health > 0;
+    @Override
+    public void attack(Role opponent) {
+        opponent.takeDamage(getAttackPower());
+        System.out.println(getName() + " 揮劍攻擊 " + opponent.getName() +
+                " 造成 " + getAttackPower() + " 點物理傷害！");
     }
 }
